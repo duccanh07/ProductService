@@ -41,7 +41,7 @@ namespace TestService
                 cmd.Parameters.Add(new SqlParameter("@id", id));
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
-                if(rdr.Read())
+                if (rdr.Read())
                 {
                     ProductModel obj = new ProductModel()
                     {
@@ -67,6 +67,33 @@ namespace TestService
 
         }
 
+        [WebMethod]
+        public ProductModel GetTotalRows ()
+        {
+            string cs = ConfigurationManager.ConnectionStrings["DbContext"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandText = "TotalRow";
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    ProductModel obj = new ProductModel()
+                    {
+                        TotalRows = Convert.ToInt32(rdr["TotalRows"]),
+                    };
+                    return obj;
+                }
+                return null;
+            }
+
+            /*JavaScriptSerializer js = new JavaScriptSerializer();
+            Context.Response.Write(js.Serialize(listProduct));*/
+
+        }
         [WebMethod]
         public List<ProductModel> GetProducts(int pageIndex, int pageSize)
         {
@@ -139,31 +166,7 @@ namespace TestService
                     listProduct.Add(product);
                 }
             }
-
-            /*JavaScriptSerializer js = new JavaScriptSerializer();
-            Context.Response.Write(js.Serialize(listProduct));*/
             return listProduct;
         }
-
-        [WebMethod]
-        public ProductModel TotalRow()
-        {
-            string cs = ConfigurationManager.ConnectionStrings["DbContext"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(cs))
-            {
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.CommandText = "TotalRow";
-                con.Open();
-                SqlDataReader rdr = cmd.ExecuteReader();
-                if (rdr.Read())
-                {
-                    
-                }
-                return null;
-            }
-        }
     }
-
 }

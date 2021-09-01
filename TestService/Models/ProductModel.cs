@@ -20,6 +20,7 @@ namespace TestService.Models
         public string PriceLine { get; set; }
         public string Status { get; set; }
         public string ImageDetail { get; set; }
+        public int TotalRows { get; set; }
     }
 
 }
