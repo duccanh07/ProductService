@@ -52,8 +52,8 @@ namespace TestService
                         ImageSrc = rdr["ImageSrc"].ToString(),
                         ImageAlt = rdr["ImageAlt"].ToString(),
                         Quantity = Convert.ToInt32(rdr["Quantity"]),
-                        Price = rdr["Price"].ToString(),
-                        PriceLine = rdr["PriceLine"].ToString(),
+                        Price = Convert.ToDecimal(rdr["Price"]),
+                        PriceLine = Convert.ToDecimal(rdr["PriceLine"]),
                         Status = rdr["Status"].ToString(),
                         ImageDetail = rdr["ImageDetail"].ToString(),
                     };
@@ -120,8 +120,8 @@ namespace TestService
                     product.ImageSrc = rdr["ImageSrc"].ToString();
                     product.ImageAlt = rdr["ImageAlt"].ToString();
                     product.Quantity = Convert.ToInt32(rdr["Quantity"]);
-                    product.Price = rdr["Price"].ToString();
-                    product.PriceLine = rdr["PriceLine"].ToString();
+                    product.Price = Convert.ToDecimal(rdr["Price"]);
+                    product.PriceLine = Convert.ToDecimal(rdr["PriceLine"]);
                     product.Status = rdr["Status"].ToString();
                     product.ImageDetail = rdr["ImageDetail"].ToString();
                     listProduct.Add(product);
@@ -158,8 +158,8 @@ namespace TestService
                     product.ImageSrc = rdr["ImageSrc"].ToString();
                     product.ImageAlt = rdr["ImageAlt"].ToString();
                     product.Quantity = Convert.ToInt32(rdr["Quantity"]);
-                    product.Price = rdr["Price"].ToString();
-                    product.PriceLine = rdr["PriceLine"].ToString();
+                    product.Price = Convert.ToDecimal(rdr["Price"]);
+                    product.PriceLine = Convert.ToDecimal(rdr["PriceLine"]);
                     product.Status = rdr["Status"].ToString();
                     product.ImageDetail = rdr["ImageDetail"].ToString();
 

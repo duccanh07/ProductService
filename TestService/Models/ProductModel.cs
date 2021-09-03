@@ -16,8 +16,8 @@ namespace TestService.Models
         public string ImageSrc { get; set; }
         public string ImageAlt { get; set; }
         public int Quantity { get; set; }
-        public string Price { get; set; }
-        public string PriceLine { get; set; }
+        public decimal Price { get; set; }
+        public decimal PriceLine { get; set; }
         public string Status { get; set; }
         public string ImageDetail { get; set; }
         public int TotalRows { get; set; }
